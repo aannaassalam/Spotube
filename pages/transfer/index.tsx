@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const queries = playlist_tracks.items?.map((_item) => {
     const artists = _item.track.artists
       .map((_artist) => _artist.name)
-      .join(" & ");
+      .join(" and ");
     return `${_item.track.name} by ${artists}`;
   });
   const youtube_tracks = [];
@@ -71,7 +71,7 @@ export default function Transfer({
   const router = useRouter();
   const cookies = parseCookies();
   const [playlistData, setPlaylistData] = useState({});
-  console.log(youtube_tracks);
+  // console.log(youtube_tracks);
 
   const {
     handleSubmit,
@@ -98,7 +98,7 @@ export default function Transfer({
       for await (const item of youtube_tracks) {
         addItem({
           playlistId: data.id,
-          resourseId: {
+          resourceId: {
             videoId: item.id.videoId,
             channelId: item.snippet.channelId,
             kind: item.id.kind,
@@ -188,6 +188,7 @@ export default function Transfer({
                     width={30}
                     height={30}
                     alt="image"
+                    style={{ height: "100%", width: "auto" }}
                   />
                   <Typography variant="body1">
                     {_track.snippet.title}

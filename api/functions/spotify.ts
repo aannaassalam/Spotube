@@ -2,11 +2,14 @@ import { endpoints } from "../endpoints";
 import spotifyInstance from "../spotifyInstance";
 
 export const serverSpotifyPlaylists = async (token: string) => {
-  const res = await spotifyInstance.get(endpoints.spotify.my_playlist, {
-    headers: {
-      Authorization: `Bearer ${token}`
+  const res = await spotifyInstance.get(
+    `${endpoints.spotify.my_playlist}?limit=50`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     }
-  });
+  );
   return res?.data;
 };
 

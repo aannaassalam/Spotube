@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(externalApiResponse.data);
   } catch (error: any) {
     // eslint-disable-next-line no-console
-    console.error("Error in API route:", Object.keys(error.response));
+    console.error("Error in API route:", JSON.stringify(error, null, 2));
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
